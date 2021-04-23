@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/Home"
+        app:showAsAction="ifRoom"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/PillsFragment"
+        android:icon="@drawable/ic_pills"
+        android:title="@string/Pill"
+        app:showAsAction="ifRoom"
+        android:enabled="true" />
+    <item
+        android:id="@+id/settingsFragment2"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/Settings"
+        app:showAsAction="ifRoom"
+        android:enabled="true"/>
+
+<!--    <item-->
+<!--        android:id="@+id/Home"-->
+<!--        android:icon="@drawable/ic_home"-->
+<!--        android:title="Home"-->
+<!--        app:cnb_iconColor="@color/White"/>-->
+<!--    <item-->
+<!--        android:id="@+id/activity"-->
+<!--        android:icon="@drawable/ic_pills"-->
+<!--        android:title="Pills"-->
+<!--        app:cnb_iconColor="@color/White"/>-->
+
+<!--    <item-->
+<!--        android:id="@+id/Settings"-->
+<!--        android:icon="@drawable/ic_settings"-->
+<!--        android:title="Settings"-->
+<!--        app:cnb_iconColor="@color/White" />-->
+</menu>

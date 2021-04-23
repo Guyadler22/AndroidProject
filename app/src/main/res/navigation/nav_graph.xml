@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/appGuide">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mypillsproject.ui.fragments.mainFragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/PillsFragment"
+        android:name="com.example.mypillsproject.ui.fragments.mainFragment.PillsFragment"
+        android:label="fragment_pills"
+        tools:layout="@layout/fragment_pills" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.mypillsproject.ui.fragments.mainFragment.login.startFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+
+    <action
+        android:id="@+id/actionGlobal_to_homeFragment"
+        app:destination="@id/homeFragment" />
+    <fragment
+        android:id="@+id/settingsFragment2"
+        android:name="com.example.mypillsproject.ui.fragments.mainFragment.SettingFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/appGuide"
+        android:name="com.example.mypillsproject.ui.fragments.mainFragment.appGuide"
+        android:label="appGuide"
+        tools:layout="@layout/app_guide">
+
+    </fragment>
+
+</navigation>

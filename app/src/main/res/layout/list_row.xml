@@ -1,0 +1,173 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/recyclerbackground"
+    android:minHeight="?attr/minTouchTargetSize"
+    android:padding="20dp"
+    app:layout_constraintBottom_toTopOf="@id/Rvmg">
+
+
+    <TextView
+        android:id="@+id/rvPillDateView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:ellipsize="end"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/Rvpill_mgView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/Rvpill_Name"
+        app:layout_constraintTop_toTopOf="@id/Rvpill_Name"
+        app:layout_constraintVertical_bias="0.683" />
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="sans-serif"
+        android:text="Date:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/Rvpill_mgView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.696" />
+
+    <TextView
+        android:id="@+id/Rvpill_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Pills name:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Rvpill_NameView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:layout_marginStart="5dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/Rvpill_Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/Rvpill_Name"
+        app:layout_constraintTop_toTopOf="@id/Rvpill_Name"/>
+
+    <TextView
+        android:id="@+id/Rvmg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif"
+        android:text="Milligram:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Rvpill_Name"
+        app:layout_constraintVertical_bias="0.571" />
+
+    <TextView
+        android:id="@+id/Rvpill_mgView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="16sp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/Rvmg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/Rvmg"
+        app:layout_constraintTop_toTopOf="@id/Rvmg"/>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="sans-serif"
+        android:text="Time:"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/Rvpill_mgView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318" />
+
+    <TextView
+        android:id="@+id/RvpillTimeView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:ellipsize="end"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/Rvpill_mgView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/Rvpill_Name"
+        app:layout_constraintTop_toTopOf="@id/Rvpill_Name"
+        app:layout_constraintVertical_bias="0.316" />
+
+    <ImageView
+        android:id="@+id/ic_delete"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/delete_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Rvpill_mgView"
+        app:layout_constraintVertical_bias="0.609" />
+
+    <ImageView
+        android:id="@+id/ic_edit"
+        android:layout_width="47dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="28dp"
+        android:padding="8dp"
+        android:src="@drawable/edit_3"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_delete"
+        app:layout_constraintEnd_toStartOf="@id/ic_delete"
+        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ic_delete"
+        app:layout_constraintVertical_bias="1.0">
+
+    </ImageView>
+
+
+    <!--    <ImageView-->
+<!--        android:id="@+id/edit_RV"-->
+<!--        android:layout_width="58dp"-->
+<!--        android:layout_height="47dp"-->
+<!--        android:src="@drawable/ic_edit"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/ic_delete"-->
+<!--        app:layout_constraintHorizontal_bias="0.89"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/Rvpill_mgView"-->
+<!--        app:layout_constraintVertical_bias="0.709" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
