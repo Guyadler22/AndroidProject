@@ -4,7 +4,6 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -18,6 +17,7 @@ import com.example.mypillsproject.R;
 import com.example.mypillsproject.pillActions;
 import com.example.mypillsproject.viewModels.PillsItem;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,16 +26,13 @@ public class RecyclerViewPills extends RecyclerView.Adapter<RecyclerViewPills.Vi
     //original list
     private List<PillsItem> pillsItem;
     //copy list
-    private List<PillsItem> allPills;
-
+    private List<PillsItem> temp;
     private pillActions pillAction;
 
 
-    public RecyclerViewPills(List<PillsItem> pillsItem, pillActions pillAction) {
-        this.pillsItem = pillsItem;
+    public RecyclerViewPills(pillActions pillAction) {
+        this.pillsItem = new ArrayList<>();
         this.pillAction = pillAction;
-        allPills = new ArrayList<>(pillsItem);
-
     }
 
     @Override
@@ -49,13 +46,16 @@ public class RecyclerViewPills extends RecyclerView.Adapter<RecyclerViewPills.Vi
         // run on background thread
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
+            System.err.println("Filtered: " + constraint.toString());
             List<PillsItem> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(pillsItem);
+            if (constraint.length() == 0 || constraint.toString().trim().length() < 1) {
+                filteredList.addAll(temp);
+                System.err.println("Size : " +  temp.size());
             } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for (PillsItem item : allPills) {
-                    if (item.getName().contains(filterPattern.toLowerCase())) {
+                String filterPattern = constraint.toString();
+                System.err.println("Pattern: " + filterPattern);
+                for (PillsItem item : temp) {
+                    if (item.getName().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
@@ -67,9 +67,11 @@ public class RecyclerViewPills extends RecyclerView.Adapter<RecyclerViewPills.Vi
 
         //run on ui thread
         @Override
+
         protected void publishResults(CharSequence constraint, FilterResults results) {
+            List<PillsItem> resultsList = new ArrayList<>((List<PillsItem>) results.values);
             pillsItem.clear();
-            pillsItem.addAll((List) results.values);
+            pillsItem.addAll(resultsList);
             notifyDataSetChanged();
         }
     };
@@ -109,11 +111,9 @@ public class RecyclerViewPills extends RecyclerView.Adapter<RecyclerViewPills.Vi
     public void onBindViewHolder(@NonNull RecyclerViewPills.ViewHolder holder, int position) {
 
         final PillsItem pillItem = pillsItem.get(position);
-        DatePicker pillDate = pillItem.getDatePicker();
         String pillName = pillItem.getName();
         int mg = pillItem.getMg();
         Date Time = new Date(pillItem.getTime());
-
 
 
         holder.editIcon.setOnClickListener(new View.OnClickListener() {
@@ -128,17 +128,18 @@ public class RecyclerViewPills extends RecyclerView.Adapter<RecyclerViewPills.Vi
                 pillAction.deletePill(pillItem);
             }
         });
-
-
         holder.mgTake.setText(String.valueOf(mg));
         holder.pillNameTake.setText(pillName);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedString = formatter.format(Time);
         holder.pillsTimeView.setText(Time.getHours() + ":" + Time.getMinutes());
-        holder.pillDateTake.setText(pillDate.toString());
+        holder.pillDateTake.setText(formattedString);
 
     }
 
     public void setPillsItem(List<PillsItem> pillsItem) {
         this.pillsItem = pillsItem;
+        this.temp = new ArrayList<>(pillsItem);
         notifyDataSetChanged();
     }
 

@@ -25,7 +25,6 @@ public class appGuide extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         textView = view.findViewById(R.id.explainTV);
         lottieAnimationView = view.findViewById(R.id.guidelineAnim);
         lottieAnimationView.setSpeed(1);

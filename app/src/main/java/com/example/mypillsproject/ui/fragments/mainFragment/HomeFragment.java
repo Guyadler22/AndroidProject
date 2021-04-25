@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -19,10 +18,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.mypillsproject.DialogPopUp;
 import com.example.mypillsproject.R;
+import com.example.mypillsproject.utils.extesions.Utils;
 import com.example.mypillsproject.viewModels.HomeViewModel;
 import com.example.mypillsproject.viewModels.PillsItem;
+import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment;
 
 import java.util.Date;
 
@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment {
     HomeViewModel model;
 
     public static Date TIME_VALUE;
-    public static DatePicker DATE_VALUE;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -66,11 +65,11 @@ public class HomeFragment extends Fragment {
         //initialize the edit text and btn
         pillMg = view.findViewById(R.id.pill_mgT);
         pillName = view.findViewById(R.id.pill_NameTake);
+
         nextBTN = view.findViewById(R.id.nextBTN);
         nextBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (pillMg.getText().toString().isEmpty() || pillName.getText().toString().isEmpty() || !setNote.isChecked() || !setDate.isChecked()) {
                     if (pillMg.getText().toString().isEmpty()) {
                         pillMg.requestFocus();
@@ -87,11 +86,9 @@ public class HomeFragment extends Fragment {
                     dialog.show();
                     return;
                 }
-
-                System.err.println(TIME_VALUE);
                 final int mg = Integer.parseInt(pillMg.getText().toString());
                 final String pName = pillName.getText().toString();
-                model.insertPill(new PillsItem(pName, mg, TIME_VALUE.getTime(),null));
+                model.insertPill(new PillsItem(pName, mg, TIME_VALUE.getTime()));
 
                 nextBTN.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.PillsFragment, null));
             }
@@ -111,8 +108,18 @@ public class HomeFragment extends Fragment {
     }
 
     public void showDialogForTime() {
-        DialogPopUp dialogPopUp = new DialogPopUp();
-        dialogPopUp.show(getParentFragmentManager(), "");
+        Utils utils = new Utils();
+        SwitchDateTimeDialogFragment dialog = utils.getDateTimeDialog(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Date date) {
+                TIME_VALUE = date;
+            }
+
+            @Override
+            public void onNegativeButtonClick(Date date) {
+            }
+        });
+        dialog.show(getParentFragmentManager(), "Date_Dialog");
     }
 
 //    public void showDialogForDate() {

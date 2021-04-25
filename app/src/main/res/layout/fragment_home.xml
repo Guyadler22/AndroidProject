@@ -14,7 +14,7 @@
         android:layout_width="310dp"
         android:layout_height="37dp"
         android:checked="false"
-        android:drawableStart="@drawable/ic_date"
+        android:drawableStart="@drawable/icons_date2"
         android:text="  Set Date"
         android:textColor="#020202"
         android:textSize="20sp"

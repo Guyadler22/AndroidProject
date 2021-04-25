@@ -1,7 +1,5 @@
 package com.example.mypillsproject.viewModels;
 
-import android.widget.DatePicker;
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -12,22 +10,13 @@ public class PillsItem {
     public String name;
     public int mg;
     public long timePicker;
-    public DatePicker datePicker;
 
-    public PillsItem(String name, int mg, long timePicker, DatePicker datePicker) {
+    // new Date() -> 1213203012302103 <->
+    public PillsItem(String name, int mg, long timePicker) {
         this.name = name;
         this.mg = mg;
         this.timePicker = timePicker;
-        this.datePicker = datePicker;
         /////////////////////////
-    }
-
-    public DatePicker getDatePicker() {
-        return datePicker;
-    }
-
-    public void setDatePicker(DatePicker datePicker) {
-        this.datePicker = datePicker;
     }
 
     public String getName() {

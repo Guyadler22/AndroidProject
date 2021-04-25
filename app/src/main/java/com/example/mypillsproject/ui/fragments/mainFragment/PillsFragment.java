@@ -18,15 +18,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mypillsproject.AlertDialogUpdate;
 import com.example.mypillsproject.R;
 import com.example.mypillsproject.RecyclerView.RecyclerViewPills;
 import com.example.mypillsproject.pillActions;
-import com.example.mypillsproject.updatePill;
+import com.example.mypillsproject.utils.extesions.Utils;
 import com.example.mypillsproject.viewModels.MainViewModel;
 import com.example.mypillsproject.viewModels.PillsItem;
+import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PillsFragment extends Fragment implements pillActions {
@@ -56,7 +57,7 @@ public class PillsFragment extends Fragment implements pillActions {
 
         //Create the observer witch update the UI
         pillsItemList = new ArrayList<>();
-        pillsRecyclerAdapter = new RecyclerViewPills(pillsItemList, this);
+        pillsRecyclerAdapter = new RecyclerViewPills(this);
         recyclerView.setAdapter(pillsRecyclerAdapter);
 
         viewModel.getPills().observe(getViewLifecycleOwner(), new Observer<List<PillsItem>>() {
@@ -84,7 +85,7 @@ public class PillsFragment extends Fragment implements pillActions {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-               pillsRecyclerAdapter.getFilter().filter(newText);
+                pillsRecyclerAdapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -115,13 +116,16 @@ public class PillsFragment extends Fragment implements pillActions {
 
     @Override
     public void updatePill(PillsItem pill) {
-        AlertDialogUpdate alertDialogUpdate = new AlertDialogUpdate(pill, new updatePill() {
+        new Utils().getDateTimeDialog(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
             @Override
-            public void updatePill(PillsItem item) {
-                viewModel.updatePill(item);
-                System.err.println("Updated!");
+            public void onPositiveButtonClick(Date date) {
+                pill.setTimePicker(date.getTime());
+                viewModel.updatePill(pill);
             }
-        });
-        alertDialogUpdate.show(getChildFragmentManager(), "update_dialog");
+
+            @Override
+            public void onNegativeButtonClick(Date date) {
+            }
+        }).show(getChildFragmentManager(), "Pill_Date_Dialog");
     }
 }
