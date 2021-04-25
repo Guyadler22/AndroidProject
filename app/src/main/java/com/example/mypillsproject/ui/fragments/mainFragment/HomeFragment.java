@@ -43,14 +43,13 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setDate = view.findViewById(R.id.setDate);
-        setDate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked)
-//                    showDialogForDate();
-            }
-        });
+//        setDate.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+////                if (isChecked)
+////                    showDialogForDate();
+//            }
+//        });
         // initialize dialog buttons
         //initialize the switch
         setNote = view.findViewById(R.id.setNotification);
@@ -70,7 +69,7 @@ public class HomeFragment extends Fragment {
         nextBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pillMg.getText().toString().isEmpty() || pillName.getText().toString().isEmpty() || !setNote.isChecked() || !setDate.isChecked()) {
+                if (pillMg.getText().toString().isEmpty() || pillName.getText().toString().isEmpty() || !setNote.isChecked()) {
                     if (pillMg.getText().toString().isEmpty()) {
                         pillMg.requestFocus();
                     }

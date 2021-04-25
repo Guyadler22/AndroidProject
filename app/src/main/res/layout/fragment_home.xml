@@ -9,19 +9,7 @@
     tools:context=".ui.fragments.mainFragment.PillsFragment">
 
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/setDate"
-        android:layout_width="310dp"
-        android:layout_height="37dp"
-        android:checked="false"
-        android:drawableStart="@drawable/icons_date2"
-        android:text="  Set Date"
-        android:textColor="#020202"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/setNotification"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192" />
+
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/setNotification"
@@ -52,13 +40,13 @@
         app:layout_constraintBottom_toTopOf="@+id/pill_NameTake"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setNotification"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/pill_NameTake"
         android:layout_width="252dp"
         android:layout_height="42dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="208dp"
         android:backgroundTint="#101010"
         android:ems="10"
         android:maxLines="1"
@@ -66,7 +54,7 @@
         android:textCursorDrawable="@color/design_default_color_on_secondary"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
