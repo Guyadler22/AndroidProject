@@ -19,6 +19,7 @@ public class PillsItem {
         this.mg = mg;
         this.timePicker = timePicker;
         this.datePicker = datePicker;
+        /////////////////////////
     }
 
     public DatePicker getDatePicker() {
